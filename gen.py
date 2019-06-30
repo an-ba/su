@@ -1,15 +1,20 @@
 import yaml #PyYAML
 import random
 
+def read_phrases(location="./phrases.yml"):
+    with open(location, 'r') as stream:
+        try:
+            phrases = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+        return phrases
+    
+def random_phrase(key):
+    phrases = read_phrases()
+    phrase = random.choice(phrases[key])
+    return phrase
 
-with open("./phrasen.yml", 'r') as stream:
-    try:
-        phrasen = yaml.safe_load(stream)
-    except yaml.YAMLError as exc:
-        print(exc)
-
-
-output = f"Ich {random.choice(phrasen['aktion1'])} {random.choice(phrasen['aktion2'])} {random.choice(phrasen['objekt'])}, weil {random.choice(phrasen['reason'])}. {random.choice(phrasen['nachsatz'])}"
+output = f"Ich {random_phrase('aktion1')} {random_phrase('aktion2')} {random_phrase('objekt')}, weil {random_phrase('reason')}. {random_phrase('nachsatz')}"
 
 
 print(output)
