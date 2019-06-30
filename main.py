@@ -20,6 +20,7 @@ def phrase_picker(key):
     return phrase
 
 def phrase():
+    nl = '\n'
     final_string = f"Ich {phrase_picker('aktion1')} {phrase_picker('aktion2')} {phrase_picker('objekt')}, weil {phrase_picker('reason')}. {phrase_picker('nachsatz')}"
     return final_string
 
