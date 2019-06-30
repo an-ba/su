@@ -8,7 +8,7 @@ def read_phrases(location="./phrases.yml"):
         except yaml.YAMLError as exc:
             print(exc)
         return phrases
-    
+
 def random_phrase(key):
     phrases = read_phrases()
     phrase = random.choice(phrases[key])
